@@ -1,0 +1,8 @@
+palette = sns.color_palette("RdYlGn", 5)
+legend = {'e': palette[0], 'd': palette[1], 'c': palette[2], 'b':palette[3], 'a':palette[4]}
+
+
+nutri_grade=d.loc[:,['nutrition_grade_fr', 'energy_100g']].groupby('nutrition_grade_fr').agg(['mean', 'count'])
+#nutri_grade = d.groupby('nutrition_grade_fr').agg(['mean', 'count'])
+plt.title('Average energy according to nutrition_grade_fr')
+plt.bar(nutri_grade.index, nutri_grade['energy_100g']['mean'], color=palette[::-1])
